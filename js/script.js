@@ -1,14 +1,14 @@
-import './style.css';
+// import './style.css';
 // import './models/pillar_02.gltf';
-import * as BABYLON from 'babylonjs';
-import 'babylonjs-loaders';
+// import * as BABYLON from 'babylonjs';
+// import 'babylonjs-loaders';
 
 // Get the canvas element
-const canvas = document.getElementById('renderCanvas') as HTMLCanvasElement;
+const canvas = document.getElementById('renderCanvas');
 
 const engine = new BABYLON.Engine(canvas, true);
 
-let blocks: Array<BABYLON.AbstractMesh> = [];
+let blocks = [];
 
 const createScene = () => {
   var scene = new BABYLON.Scene(engine);
@@ -55,7 +55,7 @@ const createScene = () => {
 
   BABYLON.SceneLoader.ImportMesh(
     '',
-    '/src/models/',
+    '../models/',
     'pillar_hollow_05.gltf',
     scene,
     (meshes) => {
@@ -105,11 +105,7 @@ const createScene = () => {
 
   new BABYLON.HemisphericLight('light', new BABYLON.Vector3(1, 1, 0));
 
-  const setCameraFrustum = (
-    camera: BABYLON.Camera,
-    min: BABYLON.Vector3,
-    max: BABYLON.Vector3
-  ) => {
+  const setCameraFrustum = (camera, min, max) => {
     const aspect = engine.getRenderHeight() / engine.getRenderWidth();
     const aspectW = (max.y - min.y) / (max.x - min.x);
 
@@ -121,7 +117,7 @@ const createScene = () => {
     camera.orthoBottom = a > 1 ? min.y * a : min.y;
   };
 
-  const computeSceneBounds = (camera: BABYLON.Camera) => {
+  const computeSceneBounds = (camera) => {
     const min = new BABYLON.Vector3(Infinity, Infinity, Infinity);
     const max = new BABYLON.Vector3(-Infinity, -Infinity, -Infinity);
 
@@ -152,7 +148,7 @@ const createScene = () => {
 
 const scene = createScene();
 
-const spinForward = (delay: number) => {
+const spinForward = (delay) => {
   console.log('spinning Blocks');
   blocks.forEach((b, i) => {
     // console.log('spinning Block', i, b.rotationQuaternion);
@@ -171,7 +167,7 @@ const spinForward = (delay: number) => {
   });
 };
 
-const spinBack = (delay: number) => {
+const spinBack = (delay) => {
   console.log('spinning Blocks Back');
   blocks.forEach((b, i) => {
     // console.log('spinning Block', i, b.rotationQuaternion);
