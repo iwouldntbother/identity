@@ -55,7 +55,7 @@ const createScene = () => {
 
   BABYLON.SceneLoader.ImportMesh(
     '',
-    '/models/',
+    '/identity/models/',
     'pillar_hollow_05.gltf',
     scene,
     (meshes) => {
