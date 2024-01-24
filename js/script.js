@@ -1,8 +1,3 @@
-// import './style.css';
-// import './models/pillar_02.gltf';
-// import * as BABYLON from 'babylonjs';
-// import 'babylonjs-loaders';
-
 // Get the canvas element
 const canvas = document.getElementById('renderCanvas');
 
@@ -55,7 +50,7 @@ const createScene = () => {
 
   BABYLON.SceneLoader.ImportMesh(
     '',
-    '/identity/models/',
+    './models/',
     'pillar_hollow_05.gltf',
     scene,
     (meshes) => {
